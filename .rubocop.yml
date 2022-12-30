@@ -1,13 +1,20 @@
 AllCops:
-  TargetRubyVersion: 2.6
-
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: double_quotes
-
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
-
-Layout/LineLength:
-  Max: 120
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  SuggestExtensions: false
+Metrics/BlockLength:
+  Exclude:
+    - '*.gemspec'
+  AllowedMethods: ['describe', 'context']
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+Style/ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition

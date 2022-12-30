@@ -1,21 +1,10 @@
-# GraphQL::Dataloader::ActiveRecord
+# graphql-dataloader-activerecord
 
 This gem provides proxy objects in place of ActiveRecord objects where the
 proxy handles relationship loading through GraphQL::Dataloader. This is an
 experimental approach which should theoretically allow authors to write GraphQL
 code that relies on ActiveRecord using regular ActiveRecord relationship
 methods without generating N+1 query situations.
-
-## Installation
-
-Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add graphql-dataloader-activerecord
-
-If bundler is not being used to manage dependencies, install the gem by
-executing:
-
-    $ gem install graphql-dataloader-activerecord
 
 ## Usage
 
