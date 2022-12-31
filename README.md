@@ -8,7 +8,45 @@ methods without generating N+1 query situations.
 
 ## Usage
 
-TODO: Write usage instructions here
+By including DataloaderRelationProxy::Lazy, your ActiveRecord-based type
+classes can transparently use efficient Dataloaders. For example, in the
+following example, N stories, and their authors can be authorized and loaded in
+a constant number of queries without changing the implementation of the types:
+
+```ruby
+class Query < GraphQL::Schema::Object
+  field :stories, ['Types::Story']
+
+  def stories
+    ::Story.all
+  end
+end
+
+class Story < GraphQL::Schema::Object
+  include DataloaderRelationProxy::Lazy
+
+  field :author, Types::User
+  field :text, String
+
+  def self.authorized?(object, context)
+    # Even though it looks like we're loading the author here, object.author is
+    # actually spawning a new fiber and yielding back to the GraphQL engine.
+    # The return value is also chainable so we can continue to efficiently follow
+    # ActiveRecord relationships as shown:
+    return false unless object.author.plan.name == 'paid'
+
+    # Arbitrary rule to force publication to load to demonstrate this
+    # functionality
+    return object.publication.present?
+  end
+
+  # There is no need to define an `author` method here since @object responds
+  # to `author` already, but if we did, it would be:
+  def author
+    @object.author
+  end
+end
+```
 
 ## Development
 
