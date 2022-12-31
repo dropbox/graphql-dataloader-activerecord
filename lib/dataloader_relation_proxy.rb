@@ -7,6 +7,7 @@ require_relative 'dataloader_relation_proxy/collection'
 require_relative 'dataloader_relation_proxy/record'
 require_relative 'dataloader_relation_proxy/version'
 require_relative 'dataloader_relation_proxy/active_record_object'
+require_relative 'dataloader_relation_proxy/lazy'
 
 # Top level namespace for a system that proxies activerecord relationships
 # through GraphQL dataloaders.

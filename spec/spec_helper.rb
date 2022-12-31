@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+require 'pry'
 require 'dataloader_relation_proxy'
 require_relative 'model_fixtures'
-require 'pry'
+require_relative 'test_implementation/test_implementation_schema'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

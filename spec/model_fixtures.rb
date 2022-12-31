@@ -5,7 +5,7 @@ ActiveRecord::Base.establish_connection(
   database: ':memory:'
 )
 
-# ActiveRecord::Base.logger = Logger.new(STDOUT)
+# ActiveRecord::Base.logger = Logger.new($stdout)
 
 class User < ActiveRecord::Base
   has_many :teams, through: :memberships
